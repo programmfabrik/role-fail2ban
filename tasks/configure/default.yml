@@ -1,0 +1,57 @@
+---
+- name: template /etc/fail2ban/fail2ban.local
+  template:
+    src: "etc/fail2ban/fail2ban.local.j2"
+    dest: "/etc/fail2ban/fail2ban.local.j2"
+    owner: root
+    group: root
+    mode: 0640
+  notify: restart fail2ban
+
+- name: template /etc/fail2ban/jail.d config files
+  template:
+    src: "etc/fail2ban/config_template.j2"
+    dest: "/etc/fail2ban/jail.d/{{ fail2ban_object.name }}.conf"
+    owner: root
+    group: root
+    mode: 0640
+  with_items: "{{ fail2ban_jails }}"
+  loop_control:
+    loop_var: fail2ban_object
+  notify: restart fail2ban
+
+- name: template /etc/fail2ban/action.d config files
+  template:
+    src: "etc/fail2ban/config_template.j2"
+    dest: "/etc/fail2ban/action.d/{{ fail2ban_object.name }}.conf"
+    owner: root
+    group: root
+    mode: 0640
+  with_items: "{{ fail2ban_actions }}"
+  loop_control:
+    loop_var: fail2ban_object
+  notify: restart fail2ban
+
+- name: template custom /etc/fail2ban/filter.d config files
+  template:
+    src: "etc/fail2ban/config_template.j2"
+    dest: "/etc/fail2ban/filter.d/{{ fail2ban_object.name }}.conf"
+    owner: root
+    group: root
+    mode: 0640
+  with_items: "{{ fail2ban_filters['custom'] }}"
+  loop_control:
+    loop_var: fail2ban_object
+  notify: restart fail2ban
+
+- name: download /etc/fail2ban/filter.d config files from urls
+  get_url:
+    url: "{{ fail2ban_filter_url.url }}"
+    dest: "/etc/fail2ban/filter.d/{{ fail2ban_filter_url.name }}.conf"
+    owner: root
+    group: root
+    mode: 0640
+  with_items: "{{ fail2ban_filters['download'] }}"
+  loop_control:
+    loop_var: fail2ban_filter_url
+  notify: restart fail2ban

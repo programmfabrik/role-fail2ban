@@ -1,0 +1,11 @@
+---
+- name: install fail2ban
+  apt:
+    pkg: "{{ fail2ban_pre_package }}"
+    state: installed
+    update_cache: no
+  with_items:
+    - fail2ban
+    - ipset
+  loop_control:
+    loop_var: fail2ban_pre_package
