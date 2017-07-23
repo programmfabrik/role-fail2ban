@@ -1,0 +1,12 @@
+{{ ansible_managed | comment }}
+
+[Definition]
+mta = postfix
+loglevel = 2
+banaction = {{ fail2ban_default_banaction }}
+maxretry = {{ fail2ban_default_maxretry }}
+logtarget = /var/log/fail2ban.log
+bantime = {{ fail2ban_default_bantime }}
+destemail = {{ fail2ban_default_destemail }}
+backend = auto
+

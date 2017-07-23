@@ -1,0 +1,17 @@
+galaxy_info:
+  author: Peter Thurner
+  company: Blunix GmbH
+  license: Apache
+  min_ansible_version: 1.2
+  platforms:
+  - name: Debian
+    versions:
+    - stretch
+  - name: Ubuntu
+    versions:
+    - xenial
+  galaxy_tags:
+    - fail2ban
+
+dependencies:
+  - blunix.role-shorewall

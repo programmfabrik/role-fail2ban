@@ -1,0 +1,32 @@
+---
+fail2ban_enabled: no
+fail2ban_default_bantime: 600
+fail2ban_default_maxretry: 5
+fail2ban_default_destemail: monitoring-example@example.com
+fail2ban_default_banaction: shorewall
+fail2ban_jails:
+  - name: default
+    vars:
+      DEFAULT:
+        backend: systemd
+        banaction: shorewall
+  - name: sshd
+    vars:
+      sshd:
+        action:
+          - shorewall[name=SSH, port=ssh, protocol=all]
+        enabled: 'true'
+        filter: sshd
+        maxretry: 6
+        port: ssh
+      sshd_ddos:
+        action:
+          - 'shorewall[name=SSH, port=ssh, protocol=tcp]'
+        enabled: 'true'
+        filter: 'sshd-ddos'
+        maxretry: 6
+        port: ssh
+fail2ban_actions: []
+fail2ban_filters:
+  download: []
+  custom: []
