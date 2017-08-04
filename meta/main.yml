@@ -13,5 +13,4 @@ galaxy_info:
   galaxy_tags:
     - fail2ban
 
-dependencies:
-  - blunix.role-shorewall
+dependencies: []
