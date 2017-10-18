@@ -1,18 +1,18 @@
 {{ ansible_managed | comment }}
 
-{% for main_key in fail2ban_object['vars'] %}
+{% for main_key in f2b_item['vars'] %}
 
 [{{ main_key }}]
-{% for key in fail2ban_object['vars'][main_key] %}
+{% for key in f2b_item['vars'][main_key] %}
 {%- set key_length = key|length -%}
-{%- if fail2ban_object['vars'][main_key][key] is string %}
-{{ key }} = {{ fail2ban_object['vars'][main_key][key] }}
-{% elif fail2ban_object['vars'][main_key][key] is number %}
-{{ key }} = {{ fail2ban_object['vars'][main_key][key] }}
+{%- if f2b_item['vars'][main_key][key] is string %}
+{{ key }} = {{ f2b_item['vars'][main_key][key] }}
+{% elif f2b_item['vars'][main_key][key] is number %}
+{{ key }} = {{ f2b_item['vars'][main_key][key] }}
 {% else %}
-{{ key }} = {{ fail2ban_object['vars'][main_key][key] | first }}
-{% if fail2ban_object['vars'][main_key][key] | length > 1 %}
-{% for item in fail2ban_object['vars'][main_key][key][1:] %}
+{{ key }} = {{ f2b_item['vars'][main_key][key] | first }}
+{% if f2b_item['vars'][main_key][key] | length > 1 %}
+{% for item in f2b_item['vars'][main_key][key][1:] %}
 {{ item|indent(width=key_length + 3, indentfirst=True) }}
 {% endfor %}
 {% endif %}
