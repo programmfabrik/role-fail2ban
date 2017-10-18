@@ -15,9 +15,10 @@ molecule:
 
 test: molecule
 
-all: install molecule
+all: install test
 
 clean:
+	molecule destroy --all
 	rm -rf molecule/*/.molecule
 	rm -rf molecule/*/tests/__pycache__
 	find . -name \*.pyc -delete
