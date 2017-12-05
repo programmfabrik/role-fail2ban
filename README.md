@@ -1,11 +1,9 @@
-Ansible Role fail2ban
-====================
+# Ansible Role fail2ban
 
 This role installs and configures fail2ban.
 
 
-Example play
-------------
+## Example play
 
 ```yaml
 - hosts: all
@@ -22,8 +20,8 @@ Example play
         vars:
           DEFAULT:
             ignoreip: '8.8.4.4'
-            backend: systemd
-            banaction: shorewall
+            backend: auto
+            banaction: iptables-multiport
       - name: sshd
         vars:
           sshd:
@@ -119,21 +117,20 @@ Example play
 ```
 
 
-Requirements
-============
+# Requirements
 
-This role requires https://github.com/blunix/role-shorewall
+- https://github.com/blunix/role-shorewall
 
 
-License
-=======
+# License
 
-Apache
+Apache-2.0
 
-Author Information
-==================
+# Author Information
 
-Service and support for orchestrated hosting environments, continuous integration/deployment/delivery and various Linux and open-source technology stacks are available from:
+Service and support for orchestrated hosting environments,
+continuous integration/deployment/delivery and various Linux
+and open-source technology stacks are available from:
 
 ```
 Blunix GmbH - Consulting for Linux Hosting 24/7
@@ -141,5 +138,6 @@ Glogauer Straße 21
 10999 Berlin - Germany
 
 Web: www.blunix.org
-Email: mailto:service@blunix.org
+Email: service[at]blunix.org
+Phone: (+49) 30 / 12 08 39 90
 ```
