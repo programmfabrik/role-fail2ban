@@ -13,8 +13,4 @@ galaxy_info:
   galaxy_tags:
   - fail2ban
 
-dependencies:
-- src: git@github.com:blunix/role-shorewall.git
-  version: 1.0.0
-  name: role-shorewall
-  scm: git
+dependencies: []

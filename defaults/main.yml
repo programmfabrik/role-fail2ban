@@ -8,8 +8,8 @@ fail2ban_jails:
   - name: default
     vars:
       DEFAULT:
-        backend: systemd
-        banaction: shorewall
+        backend: auto
+        banaction: iptables-multiport
   - name: sshd
     vars:
       sshd:
