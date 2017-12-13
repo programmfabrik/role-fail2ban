@@ -2,7 +2,6 @@
 
 This role installs and configures fail2ban.
 
-
 ## Example play
 
 ```yaml
@@ -14,7 +13,6 @@ This role installs and configures fail2ban.
     fail2ban_default_bantime: 3600
     fail2ban_default_maxretry: 5
     fail2ban_default_destemail: monitoring-example@example.com
-    fail2ban_default_banaction: shorewall
     fail2ban_jails:
       - name: default
         vars:
@@ -25,8 +23,6 @@ This role installs and configures fail2ban.
       - name: sshd
         vars:
           sshd:
-            action:
-              - shorewall[name=SSH, port=ssh, protocol=all]
             enabled: 'true'
             filter: sshd
             maxretry: 6
@@ -115,12 +111,6 @@ This role installs and configures fail2ban.
                               ^ <HOST>:\d+ TLS Error: TLS handshake failed$
                               ^ <HOST>:\d+ VERIFY ERROR
 ```
-
-
-# Requirements
-
-- https://github.com/blunix/role-shorewall
-
 
 # License
 
