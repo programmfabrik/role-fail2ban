@@ -16,7 +16,7 @@
     If you feel you are having a hard time expressing your actual point,
     you can use this simple template if you like:
 -->
-As WHOAMI I WANTNEEDWOULDLIKE XYZ, because of REASON.
+As WHOAMI I WANT|NEED|WILL XYZ, because of REASON.
 
 <!--
     Optionally, provide a task- or todo-list of things you regard as
