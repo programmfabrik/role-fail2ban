@@ -203,3 +203,5 @@ Session.vim
 tags
 
 # End of https://www.gitignore.io/api/linux,python,pycharm,ansible,vim,nano
+
+.idea/
