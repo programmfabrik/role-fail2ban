@@ -2,7 +2,7 @@
 - name: install fail2ban
   apt:
     pkg: "{{ fail2ban_pre_package }}"
-    state: installed
+    state: present
     update_cache: no
   with_items:
     - fail2ban
