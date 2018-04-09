@@ -11,7 +11,7 @@ def test_fail2ban_local(host):
 
     assert f.exists
     assert f.contains('loglevel = 2')
-    assert f.contains('banaction = shorewall')
+    assert f.contains('banaction = iptables-multiport')
     assert f.contains('maxretry = 5')
     assert f.contains('logtarget = /var/log/fail2ban.log')
     assert f.contains('bantime = 600')

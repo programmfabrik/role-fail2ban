@@ -12,8 +12,8 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
         'name': u'default',
         'vars': {
             'DEFAULT':  {
-                'backend': 'systemd',
-                'banaction': 'shorewall',
+                'backend': 'auto',
+                'banaction': 'iptables-multiport',
             }
         }
     },
@@ -21,14 +21,14 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
         'name': u'sshd',
         'vars': {
             'sshd': {
-                'action': 'shorewall[name=SSH, port=ssh, protocol=tcp]',
+                'action': 'iptables-multiport[name=SSH, port=ssh, protocol=all]',
                 'enabled': 'true',
                 'filter': 'sshd',
                 'maxretry': 6,
                 'port': 'ssh',
             },
             'ssh_ddos': {
-                'action': 'shorewall[name=SSH, port=ssh, protocol=tcp]',
+                'action': 'iptables-multiport[name=SSH, port=ssh, protocol=tcp]',
                 'enabled': 'true',
                 'filter': 'sshd-ddos',
                 'maxretry': 6,
