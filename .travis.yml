@@ -1,0 +1,11 @@
+language: python
+python:
+  - "2.7"
+  - "3.6"
+
+install:
+  - pip install -U pip
+  - make install
+
+script:
+  - make test
