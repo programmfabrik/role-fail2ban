@@ -43,6 +43,7 @@
   loop_control:
     loop_var: f2b_item
   notify: restart fail2ban
+  when: fail2ban_filters['custom'] is defined
 
 - name: download /etc/fail2ban/filter.d config files from urls
   get_url:
@@ -55,3 +56,4 @@
   loop_control:
     loop_var: fail2ban_filter_url
   notify: restart fail2ban
+  when: fail2ban_filters['download'] is defined
