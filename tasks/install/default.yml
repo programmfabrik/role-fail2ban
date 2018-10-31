@@ -1,5 +1,5 @@
 ---
-- name: install fail2ban
+- name: installing fail2ban
   apt:
     pkg: "{{ fail2ban_pre_package }}"
     state: present

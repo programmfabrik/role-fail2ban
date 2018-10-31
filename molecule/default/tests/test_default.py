@@ -7,4 +7,5 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 
 def test_package(File):
-    assert not File('/usr/bin/fail2ban-python').exists
+    f = host.file('/usr/bin/fail2ban-python')
+    assert f.exists
