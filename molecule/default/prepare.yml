@@ -1,5 +1,5 @@
 ---
-- name: Converge
+- name: Prepare
   hosts: all
   gather_facts: False
   tasks:
@@ -7,11 +7,3 @@
       raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
       become: True
       changed_when: False
-
-- name: Converge
-  hosts: all
-  become: yes
-  vars:
-    fail2ban_enabled: yes
-  roles:
-    - role: role-fail2ban
