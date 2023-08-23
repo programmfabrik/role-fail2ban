@@ -7,5 +7,6 @@
   with_items:
     - fail2ban
     - ipset
+    - python3-systemd
   loop_control:
     loop_var: fail2ban_pre_package
