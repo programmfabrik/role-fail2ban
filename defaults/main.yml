@@ -23,7 +23,7 @@ fail2ban_jails:
         action:
           - 'iptables-multiport[name=SSH, port=ssh, protocol=tcp]'
         enabled: 'true'
-        filter: 'sshd-ddos'
+        filter: 'sshd'
         maxretry: 6
         port: ssh
 fail2ban_actions: []
